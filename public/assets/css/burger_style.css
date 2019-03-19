@@ -1,0 +1,59 @@
+body {
+  background: #eaba4b;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+#listContainer {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+img {
+  background: transparent;
+  height: 250px;
+  width: 250px;
+  align-self: center;
+}
+
+li {
+  list-style: none;
+  padding: 20px 20px 20px 0;
+}
+
+.devour {
+  margin-left: 20px;
+  padding: 5px;
+}
+
+ul {
+  padding-left: 0;
+  margin: 10px;
+}
+
+#submit {
+  margin-top: 10px;
+  padding: 7px;
+  background-color: #325fdb;
+  border: blue;
+  color: white;
+  border-radius: 5px;
+}
+
+.leftSide {
+  background: white;
+  padding: 10px;
+
+}
+
+.rightSide {
+  background: white;
+  padding: 10px;
+  color: gray;
+}
