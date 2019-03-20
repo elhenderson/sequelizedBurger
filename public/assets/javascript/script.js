@@ -2,11 +2,13 @@ $( () => {
   $(".devour").on("click", function(event) {
     var id = $(this).data("id");
     var devoured = $(this).data("devoured");
+    var customer_name = $('#customerInput').val();
     console.log(devoured)
     var devouredUpdate = {
       devoured: 1
     };
-    location.reload();
+
+    console.log(customer_name);
     console.log(devouredUpdate);
 
     $.ajax(`/api/burgers/${id}`, {
@@ -15,10 +17,17 @@ $( () => {
     }).then(
       (err) => {
         if (err) throw err;
-        location.reload()
+
         console.log("Devoured!")
       }
     )
+
+    // $.ajax(`/api/customers/${customer_name}`, {
+    //   type: "POST",
+    //   data: `${customer_name}`
+    // }).then((err) => {
+    //   if (err) throw err;
+    // })
   })
 })
 

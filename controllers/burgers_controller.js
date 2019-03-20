@@ -24,7 +24,7 @@ router.post("/api/burgers", (req, res) => {
   })
 })
 
-router.put("/api/burgers/:id", (req, res) => {
+router.put("/api/burgers/:id", (req, res, next) => {
   db.Burger.update({
     devoured: req.body.devoured
   }, 
@@ -32,7 +32,14 @@ router.put("/api/burgers/:id", (req, res) => {
     where: {id: req.params.id}
   } 
   ).then((result) => {
-    res.json(result);
+      res.redirect("/");
+  }).catch(next)
+})
+
+router.post("/api/customers", (req, res) => {
+  db.Customer.create({
+    "customer_name": req.body.customer_name,
+    "burgers_eaten": 1
   })
 })
 
