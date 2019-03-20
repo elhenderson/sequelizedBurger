@@ -6,7 +6,7 @@
   <div id="scoreboard">
     <ol>
       {{#each customers}}
-        <li id="{{id}}">
+        <li id="{{id}}" data-eaten="{{burgers_eaten}}">
           {{customer_name}}: {{burgers_eaten}} burger(s) eaten!
         </li>
       {{/each}}
@@ -19,12 +19,13 @@
       {{#each burgers}}
         {{#unless devoured}}
           <li  id="{{id}}" >
-            <a class="leftSide">#{{id}}: {{burger_name}}</a>
             <form action="/api/customers" method="POST">
               <label for="customerInput"></label>
-              <input id="customerInput" type="text" name="customer_name">
+              <input id="customerInput" type="text" name="customer_name" class="leftSide">
               <button class="devour" data-id="{{id}}" data-devoured="{{devoured}}" type="submit">Devour It!</button>
             </form>
+            <br>
+            <a class="leftSide">#{{id}}: {{burger_name}}</a>
           </li>
         {{/unless}}
       {{/each}}

@@ -3,7 +3,7 @@ $( () => {
     var id = $(this).data("id");
     var devoured = $(this).data("devoured");
     var customer_name = $('#customerInput').val();
-    console.log(devoured)
+    console.log(burgers_eaten);
     var devouredUpdate = {
       devoured: 1
     };
@@ -22,6 +22,10 @@ $( () => {
       }
     )
 
+    // $.ajax(`/api/customers/${customer_name}`, {
+    //   type: "PUT",
+    //   data: 
+    // })
     // $.ajax(`/api/customers/${customer_name}`, {
     //   type: "POST",
     //   data: `${customer_name}`

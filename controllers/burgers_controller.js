@@ -51,13 +51,16 @@ router.post("/api/customers", (req, res) => {
     return db.Customer.count({where: {"customer_name": req.body.customer_name}})
       .then(count => {
         if (count != 0) {
-          db.Customer.update({
-            "burgers_eaten": Math.sqrt(req.body.burgers_eaten)
-          },
-          {
-            where: {"customer_name": req.body.customer_name}
-          }).then((result) => {
-            res.redirect("/")
+          router.put("/api/customers", (req, res) => {
+            db.Customer.update({
+              "burgers_eaten": 4
+            },
+            {
+              where: {"customer_name": req.body.customer_name}
+            }).then((result) => {
+              res.redirect("/")
+              
+            })
           })
           return false;
         }
