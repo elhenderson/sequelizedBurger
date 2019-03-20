@@ -4,13 +4,21 @@ var db = require("../models")
 var router = express.Router();
 
 router.get('/', (req, res) => {
-  console.log(req.body);
+  var hbsObj;
+  var custObj;
   db.Burger.findAll().then((results) => {  
-    console.log(results);
-    var hbsObj = {
-      burgers: results
-    };  
+    // hbsObj = {
+    //   burgers: results
+    // };  
+
+    db.Customer.findAll().then((data) => {
+      
+      hbsObj = {
+        burgers: results,
+        customers: data
+      };
     res.render("index", hbsObj);
+    })
   })
 })
 

@@ -3,6 +3,16 @@
   <img src="/img/burger.png">
   <h1>Eat-Da-Burger!</h1>
 
+  <div id="scoreboard">
+    <ol>
+      {{#each customers}}
+        <li id="{{id}}">
+          <p>{{customer_name}}</p>
+        </li>
+      {{/each}}
+    </ol>
+  </div>
+
   <div id="listContainer">
     <ul>
       Not Devoured
