@@ -44,11 +44,38 @@ router.put("/api/burgers/:id", (req, res, next) => {
   }).catch(next)
 })
 
+
 router.post("/api/customers", (req, res) => {
-  db.Customer.create({
-    "customer_name": req.body.customer_name,
-    "burgers_eaten": 1
+
+  function isCustomerUnique(customer_name) {
+    return db.Customer.count({where: {"customer_name": req.body.customer_name}})
+      .then(count => {
+        if (count != 0) {
+          db.Customer.update({
+            "burgers_eaten": Math.sqrt(req.body.burgers_eaten)
+          },
+          {
+            where: {"customer_name": req.body.customer_name}
+          }).then((result) => {
+            res.redirect("/")
+          })
+          return false;
+        }
+        return true;
+      });
+  }
+
+  isCustomerUnique(req.body.customer_name).then(isUnique => {
+    if (isUnique) {
+      db.Customer.create({
+        "customer_name": req.body.customer_name,
+        "burgers_eaten": 1
+      })
+    } else {
+      console.log("not unique")
+    }
   })
+
 })
 
 module.exports = router;
