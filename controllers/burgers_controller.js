@@ -5,7 +5,6 @@ var router = express.Router();
 
 router.get('/', (req, res) => {
   var hbsObj;
-  var custObj;
   db.Burger.findAll().then((results) => {  
     // hbsObj = {
     //   burgers: results
@@ -33,6 +32,7 @@ router.post("/api/burgers", (req, res) => {
 })
 
 router.put("/api/burgers/:id", (req, res, next) => {
+  // if (err) throw err;
   db.Burger.update({
     devoured: req.body.devoured
   }, 
@@ -69,6 +69,7 @@ router.post("/api/customers", (req, res) => {
   }
 
   isCustomerUnique(req.body.customer_name).then(isUnique => {
+    // if (err) throw err;
     if (isUnique) {
       db.Customer.create({
         "customer_name": req.body.customer_name,
