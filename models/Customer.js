@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   var Customer = sequelize.define("Customer", {
     customer_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         customValidator: function(value) {
           if (value === "") {
@@ -12,9 +12,15 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     burgers_eaten: {
-      type: DataTypes.INTEGER,
-      defaultValue: false
+      type: DataTypes.INTEGER
     }
   });
+
+  Customer.associate = (models) => {
+    Customer.hasMany(models.Burger, {
+      onDelete: "cascade"
+    })
+  }
+
   return Customer;
 }

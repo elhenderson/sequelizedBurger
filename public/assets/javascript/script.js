@@ -16,7 +16,7 @@ $( () => {
     }).then(
       (err) => {
         if (err) throw err;
-
+        window.location.href = "/api/customers"
         console.log("Devoured!")
       }
     )
