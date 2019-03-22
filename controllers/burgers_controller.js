@@ -149,43 +149,43 @@ router.put("/api/burgers/:id", (req, res, next) => {
 //   })
 // })
 
-router.post("/api/burgers", (req, res) => {
+// router.post("/api/burgers", (req, res) => {
 
-  function isCustomerUnique(customer_name) {
-    return db.Customer.count({where: {"customer_name": req.body.customer_name}})
-      .then(count => {
-        if (count != 0) {
-          router.put("/api/customers", (req, res) => {
-            db.Customer.update({
-              "burgers_eaten": 4
-            },
-            {
-              where: {"customer_name": req.body.customer_name}
-            }).then((result) => {
-               res.json(result);
+//   function isCustomerUnique(customer_name) {
+//     return db.Customer.count({where: {"customer_name": req.body.customer_name}})
+//       .then(count => {
+//         if (count != 0) {
+//           router.put("/api/customers", (req, res) => {
+//             db.Customer.update({
+//               "burgers_eaten": 4
+//             },
+//             {
+//               where: {"customer_name": req.body.customer_name}
+//             }).then((result) => {
+//                res.json(result);
               
-            })
-          })
-          return false;
-        }
-        return true;
-      });
-  }
+//             })
+//           })
+//           return false;
+//         }
+//         return true;
+//       });
+//   }
 
-  isCustomerUnique(req.body.customer_name).then(isUnique => {
-    // if (err) throw err;
-    if (isUnique) {
-      db.Customer.create({
-        "customer_name": req.body.customer_name,
-        "burgers_eaten": 1
-      }).then((result) => {
-        res.json(result);
-      })
-    } else {
-      console.log("not unique")
-    }
-  })
+//   isCustomerUnique(req.body.customer_name).then(isUnique => {
+//     // if (err) throw err;
+//     if (isUnique) {
+//       db.Customer.create({
+//         "customer_name": req.body.customer_name,
+//         "burgers_eaten": 1
+//       }).then((result) => {
+//         res.json(result);
+//       })
+//     } else {
+//       console.log("not unique")
+//     }
+//   })
 
-})
+// })
 
 module.exports = router;
