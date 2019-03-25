@@ -9,18 +9,18 @@ router.post("/api/customers", (req, res) => {
     return db.Customer.count({where: {"customer_name": req.body.customer_name}})
       .then(count => {
         if (count != 0) {
-          router.put("/api/customers", (req, res) => {
-            db.Customer.update({
-              "burgers_eaten": 4
-            },
-            {
-              where: {"customer_name": req.body.customer_name}
-            }).then((result) => {
-               res.json(result);
+          // router.put("/api/customers", (req, res) => {
+          //   db.Customer.update({
+          //     "burgers_eaten": 4
+          //   },
+          //   {
+          //     where: {"customer_name": req.body.customer_name}
+          //   }).then((result) => {
+          //      res.json(result);
                
-            })
+          //   })
 
-          })
+          // })
           return false;
         }
         return true;

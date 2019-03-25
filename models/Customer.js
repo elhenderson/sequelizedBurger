@@ -18,8 +18,12 @@ module.exports = (sequelize, DataTypes) => {
 
   Customer.associate = (models) => {
     Customer.hasMany(models.Burger, {
-      onDelete: "cascade"
+      onDelete: "cascade",
+      onUpdate: "cascade"
     })
+    // Customer.belongsTo(models.Burger, {
+    //   constraints: false
+    // });
   }
 
   return Customer;

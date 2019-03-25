@@ -34,9 +34,7 @@ $( () => {
       } else {
         $.ajax("/api/burgers", {
           type: "GET"
-        }).then(() => {
-          console.log("no")
-        })
+        }).then(() => {})
       }
     })
 })

@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         customValidator: function(value) {
           if (value === "") {
             throw new Error("This cannot be blank!")
+            
           }
         }
       }
@@ -19,9 +20,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Burger.associate = (models) => {
     Burger.belongsTo(models.Customer, {
-      foreignKey: {
-        
-      }
+
     });
   }
   
