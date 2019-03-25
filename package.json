@@ -23,5 +23,8 @@
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
     "sequelize": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3"
   }
 }
