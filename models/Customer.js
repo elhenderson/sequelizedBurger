@@ -21,9 +21,6 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade",
       onUpdate: "cascade"
     })
-    // Customer.belongsTo(models.Burger, {
-    //   constraints: false
-    // });
   }
 
   return Customer;

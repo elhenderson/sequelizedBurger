@@ -11,15 +11,12 @@ if (process.env.JAWSDB_URL) {
             database: "burgers_db"
         })
     }
-  
-
 
 connection.connect((err) => {
   if (err) {
       console.log(`Could not connect: ${err.stack}`)
       return
   }
-
   console.log(`Connected as id ${connection.threadId}`)
 })
 

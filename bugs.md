@@ -1,0 +1,1 @@
+- when first devouring a burger, it doesn't switch sides

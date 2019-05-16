@@ -1,6 +1,5 @@
 var express = require('express');
 var db = require("../models")
-// var Sequelize = require('sequelize')
 var router = express.Router();
 
 router.post("/api/customers", (req, res) => {
@@ -9,18 +8,6 @@ router.post("/api/customers", (req, res) => {
     return db.Customer.count({where: {"customer_name": req.body.customer_name}})
       .then(count => {
         if (count != 0) {
-          // router.put("/api/customers", (req, res) => {
-          //   db.Customer.update({
-          //     "burgers_eaten": 4
-          //   },
-          //   {
-          //     where: {"customer_name": req.body.customer_name}
-          //   }).then((result) => {
-          //      res.json(result);
-               
-          //   })
-
-          // })
           return false;
         }
         return true;
@@ -28,7 +15,6 @@ router.post("/api/customers", (req, res) => {
   }
 
   isCustomerUnique(req.body.customer_name).then(isUnique => {
-    // if (err) throw err;
     let burgersEaten;
     if (isUnique) {
       db.Customer.create({
@@ -55,15 +41,6 @@ router.post("/api/customers", (req, res) => {
       })
     }
   })
-
-
-  // db.Customer.create({
-  //   "customer_name": req.body.customer_name,
-  //   "burgers_eaten": 1
-  // }).then((result) => {
-  //   console.log("hello")
-  //   res.redirect("/api/burgers");
-  // })
 })
 
 module.exports = router;
