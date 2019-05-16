@@ -29,7 +29,6 @@ router.post("/api/burgers", (req, res) => {
 })
 
 router.put("/api/burgers/:id", (req, res, next) => {
-  // if (err) throw err;
   db.Burger.update({
     include: [
       {model: db.Customer, required: true}
